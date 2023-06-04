@@ -22,7 +22,6 @@ options = Options()
 options.page_load_strategy = 'eager'
 options.set_preference("webdriver.load.strategy", "unstable")
 
-# Utiliser un profil temporaire
 profile = webdriver.FirefoxProfile()
 
 driver = webdriver.Firefox(firefox_profile=profile, options=options)
@@ -30,10 +29,10 @@ driver.get('https://twitter.com/joloffpapi/status/1665029495307350016')
 driver.implicitly_wait(nombre_aleatoire)
 WebDriverWait(driver, timeout=10).until(document_initialised)
 
-# Boucle pour répéter l'opération 10 fois
+
 for _ in range(10000):
     try:
-        # Initialisation du pilote Firefox WebDriver
+       
         if quitte:
             nombre_aleatoire = random.randint(3, 5)
             (str(nombre_aleatoire) + "s")
@@ -43,7 +42,7 @@ for _ in range(10000):
             WebDriverWait(driver, timeout=10).until(document_initialised)
             quitte = False
 
-        # Retweet du message
+      
         start = time.time()
         retweet_button = driver.find_element(By.CLASS_NAME, 'css-18t94o4.css-1dbjc4n.r-1777fci.r-1jayy0c.r-bnwqim')
         retweet_button.click()
@@ -56,7 +55,7 @@ for _ in range(10000):
         succes = succes + 1
         print(str(succes) + " retweet - Confirmation : Succès")
 
-        # Temps d'attente aléatoire entre 0 secondes et 10 s
+       
         wait_time = random.randint(0, int(duree) + 1)
         time.sleep(wait_time)
 
